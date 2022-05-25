@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: deployment
+metadata:
+  name: kustomizegoat
+  namespace: kustomizegoat
+spec:
+  template:
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10014
+        runAsGroup: 10014
+      containers:
+      - image: eurogig/kustomizegoat@sha256:f152b255ec14aa06ed59fbccae66d9d90f751633b5c2c094b7c810ad53314723
+        name: kustomizegoat
+        securityContext:
+          allowPrivilegeEscalation: false
